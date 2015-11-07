@@ -18,7 +18,7 @@ Add to `config/app.php`:
 
 [
     'providers' => [
-        Vluzrmos\SlackApi\SlackApiServiceProvider::class,
+        Caftyx\SlackApi\SlackApiServiceProvider::class,
     ]
 ]
 
@@ -34,18 +34,18 @@ and add the Facades to your aliases, if you need it
 
 [
     'aliases' => [
-        'SlackApi'              => Vluzrmos\SlackApi\Facades\SlackApi::class,
-        'SlackChannel'          => Vluzrmos\SlackApi\Facades\SlackChannel::class,
-        'SlackChat'             => Vluzrmos\SlackApi\Facades\SlackChat::class,
-        'SlackGroup'            => Vluzrmos\SlackApi\Facades\SlackGroup::class,
-        'SlackFile'             => Vluzrmos\SlackApi\Facades\SlackFile::class,
-        'SlackSearch'           => Vluzrmos\SlackApi\Facades\SlackSearch::class,
-        'SlackInstantMessage'   => Vluzrmos\SlackApi\Facades\SlackInstantMessage::class,
-        'SlackUser'             => Vluzrmos\SlackApi\Facades\SlackUser::class,
-        'SlackStar'             => Vluzrmos\SlackApi\Facades\SlackStar::class,
-        'SlackUserAdmin'        => Vluzrmos\SlackApi\Facades\SlackUserAdmin::class,
-        'SlackRealTimeMessage'  => Vluzrmos\SlackApi\Facades\SlackRealTimeMessage::class,
-        'SlackTeam'             => Vluzrmos\SlackApi\Facades\SlackTeam::class,
+        'SlackApi'              => Caftyx\SlackApi\Facades\SlackApi::class,
+        'SlackChannel'          => Caftyx\SlackApi\Facades\SlackChannel::class,
+        'SlackChat'             => Caftyx\SlackApi\Facades\SlackChat::class,
+        'SlackGroup'            => Caftyx\SlackApi\Facades\SlackGroup::class,
+        'SlackFile'             => Caftyx\SlackApi\Facades\SlackFile::class,
+        'SlackSearch'           => Caftyx\SlackApi\Facades\SlackSearch::class,
+        'SlackInstantMessage'   => Caftyx\SlackApi\Facades\SlackInstantMessage::class,
+        'SlackUser'             => Caftyx\SlackApi\Facades\SlackUser::class,
+        'SlackStar'             => Caftyx\SlackApi\Facades\SlackStar::class,
+        'SlackUserAdmin'        => Caftyx\SlackApi\Facades\SlackUserAdmin::class,
+        'SlackRealTimeMessage'  => Caftyx\SlackApi\Facades\SlackRealTimeMessage::class,
+        'SlackTeam'             => Caftyx\SlackApi\Facades\SlackTeam::class,
     ]
 ]
 
@@ -60,7 +60,7 @@ Add that line on `bootstrap/app.php`:
 ```php
 <?php 
 // $app->register('App\Providers\AppServiceProvider'); (by default that comes commented)
-$app->register('Vluzrmos\SlackApi\SlackApiServiceProvider');
+$app->register('Caftyx\SlackApi\SlackApiServiceProvider');
 
 ?>
 ```
@@ -70,12 +70,12 @@ If you want to use facades, add this lines on <code>bootstrap/app.php</code>
 ```php
 <?php
 
-class_alias('Vluzrmos\SlackApi\Facades\SlackApi', 'SlackApi');
-class_alias('Vluzrmos\SlackApi\Facades\SlackChannel', 'SlackChannel');
-class_alias('Vluzrmos\SlackApi\Facades\SlackChat', 'SlackChat');
-class_alias('Vluzrmos\SlackApi\Facades\SlackGroup', 'SlackGroup');
-class_alias('Vluzrmos\SlackApi\Facades\SlackUser', 'SlackUser');
-class_alias('Vluzrmos\SlackApi\Facades\SlackTeam', 'SlackTeam');
+class_alias('Caftyx\SlackApi\Facades\SlackApi', 'SlackApi');
+class_alias('Caftyx\SlackApi\Facades\SlackChannel', 'SlackChannel');
+class_alias('Caftyx\SlackApi\Facades\SlackChat', 'SlackChat');
+class_alias('Caftyx\SlackApi\Facades\SlackGroup', 'SlackGroup');
+class_alias('Caftyx\SlackApi\Facades\SlackUser', 'SlackUser');
+class_alias('Caftyx\SlackApi\Facades\SlackTeam', 'SlackTeam');
 //... and others
 
 ?>
@@ -86,21 +86,21 @@ Otherwise, just use the singleton shortcuts:
 ```php
 <?php
 
-/** @var \Vluzrmos\SlackApi\Contracts\SlackApi $slackapi */
+/** @var \Caftyx\SlackApi\Contracts\SlackApi $slackapi */
 $slackapi     = app('slack.api');
 
-/** @var \Vluzrmos\SlackApi\Contracts\SlackChat $slackchat */
+/** @var \Caftyx\SlackApi\Contracts\SlackChat $slackchat */
 $slackchat    = app('slack.chat');
 
-/** @var \Vluzrmos\SlackApi\Contracts\SlackChannel $slackchannel */
+/** @var \Caftyx\SlackApi\Contracts\SlackChannel $slackchannel */
 $slackchannel = app('slack.channel');
 
 //or 
 
-/** @var \Vluzrmos\SlackApi\Contracts\SlackApi $slackapi */
+/** @var \Caftyx\SlackApi\Contracts\SlackApi $slackapi */
 $slackapi  = slack();
 
-/** @var \Vluzrmos\SlackApi\Contracts\SlackChat $slackchat */
+/** @var \Caftyx\SlackApi\Contracts\SlackChat $slackchat */
 $slackchat = slack('chat'); // or slack('slack.chat')
 
 //...
@@ -185,7 +185,7 @@ slack('Team')->info();
 
 namespace App\Http\Controllers;    
     
-use Vluzrmos\SlackApi\Contracts\SlackUser;
+use Caftyx\SlackApi\Contracts\SlackUser;
 
 class YourController extends Controller{
     /** @var  SlackUser */
@@ -206,7 +206,7 @@ class YourController extends Controller{
 ## All Injectable Contracts:
 
 ### Generic API
-`Vluzrmos\SlackApi\Contracts\SlackApi`
+`Caftyx\SlackApi\Contracts\SlackApi`
 
 Allows you to do generic requests to the api with the following http verbs:
 `get`, `post`, `put`, `patch`, `delete` ... all allowed api methods you could see here: [Slack Web API Methods](https://api.slack.com/methods).
@@ -232,63 +232,63 @@ $admin->invite('jhon.doe@example.com');
 ```
 
 ### Channels API
-`Vluzrmos\SlackApi\Contracts\SlackChannel`
+`Caftyx\SlackApi\Contracts\SlackChannel`
 
 Allows you to operate channels:
 `invite`, `archive`, `rename`, `join`, `kick`, `setPurpose` ...
 
 
 ### Chat API
-`Vluzrmos\SlackApi\Contracts\SlackChat`
+`Caftyx\SlackApi\Contracts\SlackChat`
 
 Allows you to send, update and delete messages with methods:
 `delete`, `message`, `update`.
 
 ### Files API
-`Vluzrmos\SlackApi\Contracts\SlackFile`
+`Caftyx\SlackApi\Contracts\SlackFile`
 
 Allows you to send, get info, delete,  or just list files:
 `info`, `lists`, `upload`, `delete`.
 
 ### Groups API
-`Vluzrmos\SlackApi\Contracts\SlackGroup`
+`Caftyx\SlackApi\Contracts\SlackGroup`
 
 Same methods of the SlackChannel, but that operates with groups and have adicional methods:
 `open`, `close`, `createChild`
 
 ### Instant Messages API (Direct Messages)
-`Vluzrmos\SlackApi\Contracts\SlackInstantMessage`
+`Caftyx\SlackApi\Contracts\SlackInstantMessage`
 
 Allows you to manage direct messages to your team members.
 
 ### Real Time Messages API
-`Vluzrmos\SlackApi\Contracts\SlackRealTimeMessage`
+`Caftyx\SlackApi\Contracts\SlackRealTimeMessage`
 
 Allows you list all channels and user presence at the moment.
 
 
 ### Search API
-`Vluzrmos\SlackApi\Contracts\SlackSearch`
+`Caftyx\SlackApi\Contracts\SlackSearch`
 
 Find messages or files.
 
 ### Stars API
-`Vluzrmos\SlackApi\Contracts\SlackStar`
+`Caftyx\SlackApi\Contracts\SlackStar`
 
 List all of starred itens.
 
 ### Team API
-`Vluzrmos\SlackApi\Contracts\SlackTeam`
+`Caftyx\SlackApi\Contracts\SlackTeam`
 
 Get information about your team.
 
 ### Users API
-`Vluzrmos\SlackApi\Contracts\SlackUser`
+`Caftyx\SlackApi\Contracts\SlackUser`
 
 Get information about an user on your team or just check your presence ou status.
 
 ### Users Admin API
-`Vluzrmos\SlackApi\Contracts\SlackUserAdmin`
+`Caftyx\SlackApi\Contracts\SlackUserAdmin`
 
 Invite new members to your team.
 

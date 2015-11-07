@@ -1,9 +1,13 @@
 {
-    "name": "vluzrmos/slack-api",
-    "description": "Wrapper for Slack.com WEB API.",
+    "name": "craftyx/slack-api",
+    "description": "Wrapper for Slack.com WEB API. Based on Vagner do Carmo one, but compatible with GuzzleHttp6 ",
     "license": "DBAD",
     "keywords":["Laravel", "Lumen", "Slack"],
     "authors": [
+        {
+            "name": "Julien Tant",
+            "email": "julien@craftyx.fr"
+        },
         {
             "name": "Vagner do Carmo",
             "email": "vluzrmos@gmail.com"
@@ -13,14 +17,14 @@
         "php": ">=5.5.9",
         "illuminate/support": "5.0.*|5.1.*",
         "illuminate/cache": "5.0.*|5.1.*",
-        "guzzlehttp/guzzle":"~4.0|~5.0|~6.0"
-    },  
+        "guzzlehttp/guzzle":"~6.0"
+    },
     "autoload": {
         "psr-4": {
-            "Vluzrmos\\": "src/Vluzrmos/"
+            "Craftyx\\": "src/Craftyx/"
         },
         "files" : [
-            "src/Vluzrmos/SlackApi/helpers.php"
+            "src/Craftyx/SlackApi/helpers.php"
         ]
     },
     "minimum-stability": "stable"
