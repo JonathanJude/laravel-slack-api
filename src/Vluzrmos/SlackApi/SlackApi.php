@@ -180,7 +180,7 @@ class SlackApi implements Contract
             $this->client = $client;
         }
 
-        $this->client->setDefaultOption('verify', false);
+        //$this->client->setDefaultOption('verify', false);
     }
 
     /**
@@ -193,11 +193,11 @@ class SlackApi implements Contract
      */
     protected function http($verb = 'get', $url = '', $parameters = [])
     {
-        /** @var  \GuzzleHttp\Message\Response $response */
+        /** @var  \GuzzleHttp\Psr7\Response $response */
         $response = $this->getHttpClient()->$verb($url, $parameters);
 
         /** @var  $contents */
-        $contents = $response->json();
+        $contents = json_decode($response->getBody());
 
         return $contents;
     }
@@ -220,7 +220,7 @@ class SlackApi implements Contract
             $parameters['attachments'] = json_encode($parameters['attachments']);
         }
 
-        $options['body'] = $parameters;
+        $options['form_params'] = $parameters;
 
         return $options;
     }
