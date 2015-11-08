@@ -1,6 +1,6 @@
 <?php
 
-namespace Caftyx\SlackApi;
+namespace Craftyx\SlackApi;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -35,13 +35,13 @@ class SlackApiServiceProvider extends ServiceProvider
      * Default contracts namespace
      * @var string
      */
-    protected $contractsNamespace = 'Caftyx\SlackApi\Contracts';
+    protected $contractsNamespace = 'Craftyx\SlackApi\Contracts';
 
     /**
      * Default methods namespace
      * @var string
      */
-    protected $methodsNamespace   = 'Caftyx\SlackApi\Methods';
+    protected $methodsNamespace   = 'Craftyx\SlackApi\Methods';
 
     /**
      * Default prefix of facade accessors
@@ -59,21 +59,21 @@ class SlackApiServiceProvider extends ServiceProvider
             $this->app->configure('services');
         }
 
-        $this->app->singleton('Caftyx\SlackApi\Contracts\SlackApi', function () {
+        $this->app->singleton('Craftyx\SlackApi\Contracts\SlackApi', function () {
             $api = new SlackApi(null, config('services.slack.token'));
 
             return $api;
         });
 
-        $this->app->alias('Caftyx\SlackApi\Contracts\SlackApi', 'slack.api');
+        $this->app->alias('Craftyx\SlackApi\Contracts\SlackApi', 'slack.api');
 
         foreach ($this->methods as $method) {
             $this->registerSlackMethod($method);
         }
 
-        $this->app->alias('Caftyx\SlackApi\Contracts\SlackInstantMessage', 'slack.im');
+        $this->app->alias('Craftyx\SlackApi\Contracts\SlackInstantMessage', 'slack.im');
 
-        $this->app->alias('Caftyx\SlackApi\Contracts\SlackRealTimeMessage', 'slack.rtm');
+        $this->app->alias('Craftyx\SlackApi\Contracts\SlackRealTimeMessage', 'slack.rtm');
     }
 
     /**

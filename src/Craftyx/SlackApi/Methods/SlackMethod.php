@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackApi;
+use Craftyx\SlackApi\Contracts\SlackApi;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 abstract class SlackMethod
@@ -14,7 +14,7 @@ abstract class SlackMethod
     protected $methodsGroup = "api.";
 
     /**
-     * @var \Caftyx\SlackApi\Contracts\SlackApi
+     * @var \Craftyx\SlackApi\Contracts\SlackApi
      */
     protected $api;
 
@@ -26,7 +26,7 @@ abstract class SlackMethod
     protected $cachePrefix = '__vlz_slackc_';
 
     /**
-     * @param \Caftyx\SlackApi\Contracts\SlackApi  $api
+     * @param \Craftyx\SlackApi\Contracts\SlackApi  $api
      * @param Cache $cache
      */
     public function __construct(SlackApi $api, Cache $cache)
@@ -51,7 +51,7 @@ abstract class SlackMethod
 
     /**
      * Returns the api
-     * @return \Caftyx\SlackApi\Contracts\SlackApi
+     * @return \Craftyx\SlackApi\Contracts\SlackApi
      */
     public function getApi()
     {

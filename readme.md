@@ -1,10 +1,6 @@
-## Laravel 5 e Lumen - Slack API
+## Slack API for Laravel 5
 
-[![Join the chat at https://gitter.im/vluzrmos/laravel-slack-api](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vluzrmos/laravel-slack-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-This package provides a simple way to use [Slack API](https://api.slack.com).
-
-[![Latest Stable Version](https://poser.pugx.org/vluzrmos/slack-api/v/stable.svg)](https://packagist.org/packages/vluzrmos/slack-api) [![Total Downloads](https://poser.pugx.org/vluzrmos/slack-api/downloads.svg)](https://packagist.org/packages/vluzrmos/slack-api) [![Latest Unstable Version](https://poser.pugx.org/vluzrmos/slack-api/v/unstable.svg)](https://packagist.org/packages/vluzrmos/slack-api) [![License](https://poser.pugx.org/vluzrmos/slack-api/license.svg)](https://packagist.org/packages/vluzrmos/slack-api)
+This package provides a simple way to use [Slack API](https://api.slack.com). It's based on the excellent [Vluzrmos](https://github.com/vluzrmos) package, but it's compatible with Guzzle6
 
 ## Instalation 
 
@@ -18,7 +14,7 @@ Add to `config/app.php`:
 
 [
     'providers' => [
-        Caftyx\SlackApi\SlackApiServiceProvider::class,
+        Craftyx\SlackApi\SlackApiServiceProvider::class,
     ]
 ]
 
@@ -34,18 +30,18 @@ and add the Facades to your aliases, if you need it
 
 [
     'aliases' => [
-        'SlackApi'              => Caftyx\SlackApi\Facades\SlackApi::class,
-        'SlackChannel'          => Caftyx\SlackApi\Facades\SlackChannel::class,
-        'SlackChat'             => Caftyx\SlackApi\Facades\SlackChat::class,
-        'SlackGroup'            => Caftyx\SlackApi\Facades\SlackGroup::class,
-        'SlackFile'             => Caftyx\SlackApi\Facades\SlackFile::class,
-        'SlackSearch'           => Caftyx\SlackApi\Facades\SlackSearch::class,
-        'SlackInstantMessage'   => Caftyx\SlackApi\Facades\SlackInstantMessage::class,
-        'SlackUser'             => Caftyx\SlackApi\Facades\SlackUser::class,
-        'SlackStar'             => Caftyx\SlackApi\Facades\SlackStar::class,
-        'SlackUserAdmin'        => Caftyx\SlackApi\Facades\SlackUserAdmin::class,
-        'SlackRealTimeMessage'  => Caftyx\SlackApi\Facades\SlackRealTimeMessage::class,
-        'SlackTeam'             => Caftyx\SlackApi\Facades\SlackTeam::class,
+        'SlackApi'              => Craftyx\SlackApi\Facades\SlackApi::class,
+        'SlackChannel'          => Craftyx\SlackApi\Facades\SlackChannel::class,
+        'SlackChat'             => Craftyx\SlackApi\Facades\SlackChat::class,
+        'SlackGroup'            => Craftyx\SlackApi\Facades\SlackGroup::class,
+        'SlackFile'             => Craftyx\SlackApi\Facades\SlackFile::class,
+        'SlackSearch'           => Craftyx\SlackApi\Facades\SlackSearch::class,
+        'SlackInstantMessage'   => Craftyx\SlackApi\Facades\SlackInstantMessage::class,
+        'SlackUser'             => Craftyx\SlackApi\Facades\SlackUser::class,
+        'SlackStar'             => Craftyx\SlackApi\Facades\SlackStar::class,
+        'SlackUserAdmin'        => Craftyx\SlackApi\Facades\SlackUserAdmin::class,
+        'SlackRealTimeMessage'  => Craftyx\SlackApi\Facades\SlackRealTimeMessage::class,
+        'SlackTeam'             => Craftyx\SlackApi\Facades\SlackTeam::class,
     ]
 ]
 
@@ -53,61 +49,6 @@ and add the Facades to your aliases, if you need it
 ```
 > The ::class notation is optional.
 
-## Instalation on Lumen
-
-Add that line on `bootstrap/app.php`:
-
-```php
-<?php 
-// $app->register('App\Providers\AppServiceProvider'); (by default that comes commented)
-$app->register('Caftyx\SlackApi\SlackApiServiceProvider');
-
-?>
-```
-
-If you want to use facades, add this lines on <code>bootstrap/app.php</code>
-
-```php
-<?php
-
-class_alias('Caftyx\SlackApi\Facades\SlackApi', 'SlackApi');
-class_alias('Caftyx\SlackApi\Facades\SlackChannel', 'SlackChannel');
-class_alias('Caftyx\SlackApi\Facades\SlackChat', 'SlackChat');
-class_alias('Caftyx\SlackApi\Facades\SlackGroup', 'SlackGroup');
-class_alias('Caftyx\SlackApi\Facades\SlackUser', 'SlackUser');
-class_alias('Caftyx\SlackApi\Facades\SlackTeam', 'SlackTeam');
-//... and others
-
-?>
-```
-
-Otherwise, just use the singleton shortcuts:
-
-```php
-<?php
-
-/** @var \Caftyx\SlackApi\Contracts\SlackApi $slackapi */
-$slackapi     = app('slack.api');
-
-/** @var \Caftyx\SlackApi\Contracts\SlackChat $slackchat */
-$slackchat    = app('slack.chat');
-
-/** @var \Caftyx\SlackApi\Contracts\SlackChannel $slackchannel */
-$slackchannel = app('slack.channel');
-
-//or 
-
-/** @var \Caftyx\SlackApi\Contracts\SlackApi $slackapi */
-$slackapi  = slack();
-
-/** @var \Caftyx\SlackApi\Contracts\SlackChat $slackchat */
-$slackchat = slack('chat'); // or slack('slack.chat')
-
-//...
-//...
-
-?>
-```
 
 ## Configuration
 
@@ -185,7 +126,7 @@ slack('Team')->info();
 
 namespace App\Http\Controllers;    
     
-use Caftyx\SlackApi\Contracts\SlackUser;
+use Craftyx\SlackApi\Contracts\SlackUser;
 
 class YourController extends Controller{
     /** @var  SlackUser */
@@ -206,7 +147,7 @@ class YourController extends Controller{
 ## All Injectable Contracts:
 
 ### Generic API
-`Caftyx\SlackApi\Contracts\SlackApi`
+`Craftyx\SlackApi\Contracts\SlackApi`
 
 Allows you to do generic requests to the api with the following http verbs:
 `get`, `post`, `put`, `patch`, `delete` ... all allowed api methods you could see here: [Slack Web API Methods](https://api.slack.com/methods).
@@ -232,63 +173,63 @@ $admin->invite('jhon.doe@example.com');
 ```
 
 ### Channels API
-`Caftyx\SlackApi\Contracts\SlackChannel`
+`Craftyx\SlackApi\Contracts\SlackChannel`
 
 Allows you to operate channels:
 `invite`, `archive`, `rename`, `join`, `kick`, `setPurpose` ...
 
 
 ### Chat API
-`Caftyx\SlackApi\Contracts\SlackChat`
+`Craftyx\SlackApi\Contracts\SlackChat`
 
 Allows you to send, update and delete messages with methods:
 `delete`, `message`, `update`.
 
 ### Files API
-`Caftyx\SlackApi\Contracts\SlackFile`
+`Craftyx\SlackApi\Contracts\SlackFile`
 
 Allows you to send, get info, delete,  or just list files:
 `info`, `lists`, `upload`, `delete`.
 
 ### Groups API
-`Caftyx\SlackApi\Contracts\SlackGroup`
+`Craftyx\SlackApi\Contracts\SlackGroup`
 
 Same methods of the SlackChannel, but that operates with groups and have adicional methods:
 `open`, `close`, `createChild`
 
 ### Instant Messages API (Direct Messages)
-`Caftyx\SlackApi\Contracts\SlackInstantMessage`
+`Craftyx\SlackApi\Contracts\SlackInstantMessage`
 
 Allows you to manage direct messages to your team members.
 
 ### Real Time Messages API
-`Caftyx\SlackApi\Contracts\SlackRealTimeMessage`
+`Craftyx\SlackApi\Contracts\SlackRealTimeMessage`
 
 Allows you list all channels and user presence at the moment.
 
 
 ### Search API
-`Caftyx\SlackApi\Contracts\SlackSearch`
+`Craftyx\SlackApi\Contracts\SlackSearch`
 
 Find messages or files.
 
 ### Stars API
-`Caftyx\SlackApi\Contracts\SlackStar`
+`Craftyx\SlackApi\Contracts\SlackStar`
 
 List all of starred itens.
 
 ### Team API
-`Caftyx\SlackApi\Contracts\SlackTeam`
+`Craftyx\SlackApi\Contracts\SlackTeam`
 
 Get information about your team.
 
 ### Users API
-`Caftyx\SlackApi\Contracts\SlackUser`
+`Craftyx\SlackApi\Contracts\SlackUser`
 
 Get information about an user on your team or just check your presence ou status.
 
 ### Users Admin API
-`Caftyx\SlackApi\Contracts\SlackUserAdmin`
+`Craftyx\SlackApi\Contracts\SlackUserAdmin`
 
 Invite new members to your team.
 

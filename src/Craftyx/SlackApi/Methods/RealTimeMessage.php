@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackRealTimeMessage;
+use Craftyx\SlackApi\Contracts\SlackRealTimeMessage;
 
 class RealTimeMessage extends SlackMethod implements SlackRealTimeMessage
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Caftyx\SlackApi;
+namespace Craftyx\SlackApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Traits\Macroable;
-use Caftyx\SlackApi\Contracts\SlackApi as Contract;
+use Craftyx\SlackApi\Contracts\SlackApi as Contract;
 
 class SlackApi implements Contract
 {

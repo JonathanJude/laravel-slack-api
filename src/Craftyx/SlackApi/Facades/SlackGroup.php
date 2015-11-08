@@ -1,6 +1,6 @@
 <?php
 
-namespace Caftyx\SlackApi\Facades;
+namespace Craftyx\SlackApi\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

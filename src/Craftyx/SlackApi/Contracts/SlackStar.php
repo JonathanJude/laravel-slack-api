@@ -1,6 +1,6 @@
 <?php
 
-namespace Caftyx\SlackApi\Contracts;
+namespace Craftyx\SlackApi\Contracts;
 
 interface SlackStar
 {

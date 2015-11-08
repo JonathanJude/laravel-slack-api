@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackTeam;
+use Craftyx\SlackApi\Contracts\SlackTeam;
 
 class Team extends SlackMethod implements SlackTeam
 {

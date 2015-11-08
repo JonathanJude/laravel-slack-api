@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackSearch;
+use Craftyx\SlackApi\Contracts\SlackSearch;
 
 class Search extends SlackMethod implements SlackSearch
 {

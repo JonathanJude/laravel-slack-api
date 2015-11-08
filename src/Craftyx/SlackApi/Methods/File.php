@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackFile;
+use Craftyx\SlackApi\Contracts\SlackFile;
 
 class File extends SlackMethod implements SlackFile
 {

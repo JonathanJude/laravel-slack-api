@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackChat;
+use Craftyx\SlackApi\Contracts\SlackChat;
 
 class Chat extends SlackMethod implements SlackChat
 {

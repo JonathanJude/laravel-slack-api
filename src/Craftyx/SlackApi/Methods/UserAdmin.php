@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackUserAdmin;
+use Craftyx\SlackApi\Contracts\SlackUserAdmin;
 
 class UserAdmin extends SlackMethod implements SlackUserAdmin
 {

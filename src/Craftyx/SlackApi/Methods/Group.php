@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackGroup;
+use Craftyx\SlackApi\Contracts\SlackGroup;
 
 class Group extends Channel implements SlackGroup
 {

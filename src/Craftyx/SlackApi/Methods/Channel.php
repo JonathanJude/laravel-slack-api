@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackChannel;
+use Craftyx\SlackApi\Contracts\SlackChannel;
 
 class Channel extends SlackMethod implements SlackChannel
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackUser;
+use Craftyx\SlackApi\Contracts\SlackUser;
 
 class User extends SlackMethod implements SlackUser
 {

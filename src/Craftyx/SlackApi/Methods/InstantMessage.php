@@ -1,8 +1,8 @@
 <?php
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackInstantMessage;
+use Craftyx\SlackApi\Contracts\SlackInstantMessage;
 
 class InstantMessage extends SlackMethod implements SlackInstantMessage
 {

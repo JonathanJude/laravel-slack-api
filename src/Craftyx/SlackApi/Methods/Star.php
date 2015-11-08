@@ -6,9 +6,9 @@
  * Time: 02:43
  */
 
-namespace Caftyx\SlackApi\Methods;
+namespace Craftyx\SlackApi\Methods;
 
-use Caftyx\SlackApi\Contracts\SlackStar;
+use Craftyx\SlackApi\Contracts\SlackStar;
 
 class Star extends SlackMethod implements SlackStar
 {
