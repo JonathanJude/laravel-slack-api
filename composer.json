@@ -11,6 +11,10 @@
         {
             "name": "Vagner do Carmo",
             "email": "vluzrmos@gmail.com"
+        },
+        {
+            "name": "Daniel Baron",
+            "email": "daniel.baron@gmx.net"
         }
     ],
     "require": {
