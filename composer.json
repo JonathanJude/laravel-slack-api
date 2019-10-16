@@ -1,35 +1,60 @@
 {
-    "name": "craftyx/slack-api",
-    "description": "Wrapper for Slack.com WEB API. Based on Vagner do Carmo one, but compatible with GuzzleHttp6 ",
-    "license": "DBAD",
-    "keywords":["Laravel", "Lumen", "Slack"],
-    "authors": [
-        {
-            "name": "Julien Tant",
-            "email": "julien@craftyx.fr"
-        },
-        {
-            "name": "Vagner do Carmo",
-            "email": "vluzrmos@gmail.com"
-        },
-        {
-            "name": "Daniel Baron",
-            "email": "daniel.baron@gmx.net"
-        }
-    ],
-    "require": {
-        "php": ">=7.2",
-        "illuminate/support": "6.*",
-        "illuminate/cache": "6.*",
-        "guzzlehttp/guzzle":"~5.3|~6.0"
+  "name": "craftyx/slack-api",
+  "description": "Wrapper for Slack.com WEB API. Based on Vagner do Carmo one, but compatible with GuzzleHttp6 ",
+  "license": "DBAD",
+  "keywords": [
+    "Laravel",
+    "Lumen",
+    "Slack"
+  ],
+  "authors": [
+    {
+      "name": "Julien Tant",
+      "email": "julien@craftyx.fr"
     },
-    "autoload": {
-        "psr-4": {
-            "Craftyx\\": "src/Craftyx/"
-        },
-        "files" : [
-            "src/Craftyx/SlackApi/helpers.php"
-        ]
+    {
+      "name": "Vagner do Carmo",
+      "email": "vluzrmos@gmail.com"
     },
-    "minimum-stability": "dev"
+    {
+      "name": "Daniel Baron",
+      "email": "daniel.baron@gmx.net"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "illuminate/support": "6.*",
+    "illuminate/cache": "6.*",
+    "guzzlehttp/guzzle": "~5.3|~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Craftyx\\": "src/Craftyx/"
+    },
+    "files": [
+      "src/Craftyx/SlackApi/helpers.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Craftyx\\SlackApi\\SlackApiServiceProvider"
+      ],
+      "aliases": {
+        "SlackApi": "Craftyx\\SlackApi\\Facades\\SlackApi",
+        "SlackChannel": "Craftyx\\SlackApi\\Facades\\SlackChannel",
+        "SlackChat": "Craftyx\\SlackApi\\Facades\\SlackChat",
+        "SlackGroup": "Craftyx\\SlackApi\\Facades\\SlackGroup",
+        "SlackFile": "Craftyx\\SlackApi\\Facades\\SlackFile",
+        "SlackSearch": "Craftyx\\SlackApi\\Facades\\SlackSearch",
+        "SlackInstantMessage": "Craftyx\\SlackApi\\Facades\\SlackInstantMessage",
+        "SlackUser": "Craftyx\\SlackApi\\Facades\\SlackUser",
+        "SlackStar": "Craftyx\\SlackApi\\Facades\\SlackStar",
+        "SlackUserAdmin": "Craftyx\\SlackApi\\Facades\\SlackUserAdmin",
+        "SlackRealTimeMessage": "Craftyx\\SlackApi\\Facades\\SlackRealTimeMessage",
+        "SlackTeam": "Craftyx\\SlackApi\\Facades\\SlackTeam"
+      }
+    }
+  }
 }
