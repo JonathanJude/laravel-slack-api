@@ -135,13 +135,13 @@ class SlackApi implements Contract
             return app($method);
         }
 
-        $contract = __NAMESPACE__.'\\Contracts\\Slack'.studly_case($method);
+        $contract = __NAMESPACE__.'\\Contracts\\Slack'. Str::studly($method);
 
         if (class_exists($contract)) {
             return app($contract);
         }
 
-        return app('slack.'.snake_case($method));
+        return app('slack.'. Str::snake($method));
     }
 
     /**

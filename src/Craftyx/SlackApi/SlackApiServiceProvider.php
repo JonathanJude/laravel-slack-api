@@ -91,7 +91,7 @@ class SlackApiServiceProvider extends ServiceProvider
     public function registerSlackMethod($name)
     {
         $contract = \Str::finish($this->contractsNamespace, '\\')."Slack{$name}";
-        $shortcut = $this->shortcutPrefix.snake_case($name);
+        $shortcut = $this->shortcutPrefix.\Str::snake($name);
         $class = \Str::finish($this->methodsNamespace, '\\').$name;
 
         $this->registerSlackSingletons($contract, $class, $shortcut);
