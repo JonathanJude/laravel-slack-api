@@ -14,7 +14,7 @@ class SlackApiServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Methods to register
+     * Methods to register.
      * @var array
      */
     protected $methods = [
@@ -29,26 +29,26 @@ class SlackApiServiceProvider extends ServiceProvider
         'Star',
         'Reaction',
         'RealTimeMessage',
-        'UserAdmin'
+        'UserAdmin',
     ];
 
     /**
-     * Default contracts namespace
+     * Default contracts namespace.
      * @var string
      */
     protected $contractsNamespace = 'Craftyx\SlackApi\Contracts';
 
     /**
-     * Default methods namespace
+     * Default methods namespace.
      * @var string
      */
-    protected $methodsNamespace   = 'Craftyx\SlackApi\Methods';
+    protected $methodsNamespace = 'Craftyx\SlackApi\Methods';
 
     /**
-     * Default prefix of facade accessors
+     * Default prefix of facade accessors.
      * @var string
      */
-    protected $shortcutPrefix  = "slack.";
+    protected $shortcutPrefix = 'slack.';
 
     /**
      * Register the service provider.
@@ -89,9 +89,9 @@ class SlackApiServiceProvider extends ServiceProvider
 
     public function registerSlackMethod($name)
     {
-        $contract = str_finish($this->contractsNamespace, "\\")."Slack{$name}";
+        $contract = str_finish($this->contractsNamespace, '\\')."Slack{$name}";
         $shortcut = $this->shortcutPrefix.snake_case($name);
-        $class    = str_finish($this->methodsNamespace, "\\").$name;
+        $class = str_finish($this->methodsNamespace, '\\').$name;
 
         $this->registerSlackSingletons($contract, $class, $shortcut);
     }
@@ -101,7 +101,7 @@ class SlackApiServiceProvider extends ServiceProvider
      * @param $class
      * @param $shortcut
      */
-    public function registerSlackSingletons($contract, $class, $shortcut=null)
+    public function registerSlackSingletons($contract, $class, $shortcut = null)
     {
         $this->app->singleton($contract, function () use ($class) {
             return new $class($this->app['slack.api'], $this->app['cache.store']);

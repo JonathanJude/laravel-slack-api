@@ -6,7 +6,7 @@ use Craftyx\SlackApi\Contracts\SlackUser;
 
 class User extends SlackMethod implements SlackUser
 {
-    protected $methodsGroup = "users.";
+    protected $methodsGroup = 'users.';
 
     /**
      * This method lets you find out information about a user's presence.
@@ -32,7 +32,7 @@ class User extends SlackMethod implements SlackUser
     {
         $user = $this->getUsersIDsByNicks($user);
 
-        return $this->method('info', ['user' => $user[0]]);
+        return $this->method('info', ['user' => isset($user[0]) ? $user[0]: null]);
     }
 
     /**
@@ -46,7 +46,7 @@ class User extends SlackMethod implements SlackUser
     }
 
     /**
-     * Alias to lists
+     * Alias to lists.
      *
      * @return array
      */
@@ -67,6 +67,17 @@ class User extends SlackMethod implements SlackUser
     }
 
     /**
+     * This method return user info search by email
+     *
+     * @param $email
+     * @return array
+     */
+    public function lookupByEmail($email)
+    {
+        return $this->method('lookupByEmail', ['email' => $email]);
+    }
+
+    /**
      * This method lets you set the calling user's manual presence.
      * Consult the presence documentation for more details.
      *
@@ -80,7 +91,7 @@ class User extends SlackMethod implements SlackUser
     }
 
     /**
-     * Get an array of users id's by nicks
+     * Get an array of users id's by nicks.
      *
      * @param string|array $nicks
      * @param bool         $force force to reload the users list
@@ -93,22 +104,22 @@ class User extends SlackMethod implements SlackUser
     {
         $users = $this->cacheGet('list');
 
-        if (!$users || $force) {
+        if (! $users || $force) {
             $users = $this->cachePut('list', $this->lists(), $cacheMinutes);
         }
 
-        if (!is_array($nicks)) {
+        if (! is_array($nicks)) {
             $nicks = preg_split('/, ?/', $nicks);
         }
 
         $usersIds = [];
 
-        foreach ($users['members'] as $user) {
+        foreach ($users->members as $user) {
             foreach ($nicks as $nick) {
                 if ($this->isUserNick($user, $nick)) {
-                    $usersIds[] = $user['id'];
+                    $usersIds[] = $user->id;
                 } elseif ($this->isSlackbotNick($nick)) {
-                    $usersIds[] ='USLACKBOT';
+                    $usersIds[] = 'USLACKBOT';
                 }
             }
         }
@@ -117,7 +128,7 @@ class User extends SlackMethod implements SlackUser
     }
 
     /**
-     * Verify if a given nick is for the user
+     * Verify if a given nick is for the user.
      *
      * @param array $user
      * @param string $nick
@@ -128,11 +139,11 @@ class User extends SlackMethod implements SlackUser
     {
         $nick = str_replace('@', '', $nick);
 
-        return $nick == $user['name'] || $nick == $user['id'];
+        return $nick == $user->name || $nick == $user->id;
     }
 
     /**
-     * Check if a given nick is for the slackbot
+     * Check if a given nick is for the slackbot.
      *
      * @param string $nick
      *
@@ -140,6 +151,6 @@ class User extends SlackMethod implements SlackUser
      */
     protected function isSlackbotNick($nick)
     {
-        return $nick == 'slackbot' or $nick=='@slackbot' or $nick == 'USLACKBOT';
+        return $nick == 'slackbot' or $nick == '@slackbot' or $nick == 'USLACKBOT';
     }
 }

@@ -6,7 +6,7 @@ use Craftyx\SlackApi\Contracts\SlackInstantMessage;
 
 class InstantMessage extends SlackMethod implements SlackInstantMessage
 {
-    protected $methodsGroup = "im.";
+    protected $methodsGroup = 'im.';
 
     /**
      * This method closes a direct message channel.
@@ -80,6 +80,6 @@ class InstantMessage extends SlackMethod implements SlackInstantMessage
      */
     public function open($user)
     {
-        return $this->method('close', compact('user'));
+        return $this->method('open', compact('user'));
     }
 }

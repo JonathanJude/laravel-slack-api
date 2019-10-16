@@ -21,7 +21,7 @@
         "php": ">=7.2",
         "illuminate/support": "6.*",
         "illuminate/cache": "6.*",
-        "guzzlehttp/guzzle":"~6.0"
+        "guzzlehttp/guzzle":"~5.3|~6.0"
     },
     "autoload": {
         "psr-4": {
@@ -31,5 +31,5 @@
             "src/Craftyx/SlackApi/helpers.php"
         ]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
