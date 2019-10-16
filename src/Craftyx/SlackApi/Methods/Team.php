@@ -6,7 +6,7 @@ use Craftyx\SlackApi\Contracts\SlackTeam;
 
 class Team extends SlackMethod implements SlackTeam
 {
-    protected $methodsGroup = "team.";
+    protected $methodsGroup = 'team.';
 
     /**
      * This method provides information about your team.
