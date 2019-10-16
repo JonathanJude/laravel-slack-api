@@ -3,6 +3,7 @@
 namespace Craftyx\SlackApi;
 
 use Illuminate\Support\ServiceProvider;
+use Str;
 
 class SlackApiServiceProvider extends ServiceProvider
 {
@@ -56,7 +57,7 @@ class SlackApiServiceProvider extends ServiceProvider
     public function register()
     {
         /* Lumen autoload services configs */
-        if (str_contains($this->app->version(), 'Lumen')) {
+        if (Str::contains($this->app->version(), 'Lumen')) {
             $this->app->configure('services');
         }
 
@@ -89,9 +90,9 @@ class SlackApiServiceProvider extends ServiceProvider
 
     public function registerSlackMethod($name)
     {
-        $contract = str_finish($this->contractsNamespace, '\\')."Slack{$name}";
+        $contract = \Str::finish($this->contractsNamespace, '\\')."Slack{$name}";
         $shortcut = $this->shortcutPrefix.snake_case($name);
-        $class = str_finish($this->methodsNamespace, '\\').$name;
+        $class = \Str::finish($this->methodsNamespace, '\\').$name;
 
         $this->registerSlackSingletons($contract, $class, $shortcut);
     }
